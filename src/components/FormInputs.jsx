@@ -63,7 +63,6 @@ const handleSkillToggle = (skill) => {
 
 return (
 <>
- {/* Name */}
  <TextField
         label="Name"
         fullWidth
@@ -75,7 +74,6 @@ return (
         helperText={formik.touched.name && formik.errors.name}
       />
 
-      {/* Title */}
       <TextField
         label="Title"
         fullWidth
@@ -87,7 +85,6 @@ return (
         helperText={formik.touched.title && formik.errors.title}
       />
 
-      {/* Description */}
       <TextField
         label="Description"
         multiline
@@ -106,7 +103,6 @@ return (
         }
       />
 
-      {/* Gender */}
       <Box sx={{ mt: 2, mb: 1 }}>
         <RadioGroup
           row
@@ -122,7 +118,6 @@ return (
         )}
       </Box>
 
-      {/* Skills */}
       <Box sx={{ mt: 2, mb: 1 }}>
         <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
           {skillsList.map((skill) => (
@@ -147,7 +142,6 @@ return (
       </Box>
 
 
-      {/* Category */}
       <FormControl 
         fullWidth 
         margin="normal"
@@ -167,7 +161,6 @@ return (
         )}
       </FormControl>
 
-      {/* Date */}
       <TextField
         type="date"
         fullWidth
@@ -179,38 +172,76 @@ return (
         helperText={formik.touched.date && formik.errors.date}
       />
 
-      {/* Image */}
       <Box mt={2}>
-        <input
-          type="file"
-          accept="image/*"
-          onChange={(e) => {
-            const file = e.target.files[0];
-            if (file) {
-              const reader = new FileReader();
-              reader.onloadend = () =>
-                handleChange("image", reader.result);
-              reader.readAsDataURL(file);
-            }
-          }}
-        />
+        <label htmlFor="image-upload">
+          <input
+            id="image-upload"
+            type="file"
+            accept="image/*"
+            style={{ display: "none" }}
+            onChange={(e) => {
+              const file = e.target.files[0];
+              if (file) {
+                const reader = new FileReader();
+                reader.onloadend = () =>
+                  handleChange("image", reader.result);
+                reader.readAsDataURL(file);
+              }
+            }}
+          />
+          <Box
+            component="span"
+            sx={{
+              display: "inline-block",
+              px: 2,
+              py: 1,
+              backgroundColor: "#e0e0e0",
+              color: "#222",
+              borderRadius: 2,
+              cursor: "pointer",
+              fontWeight: "bold",
+              border: "1px solid #bbb",
+            }}
+          >
+            Choose Image
+          </Box>
+        </label>
       </Box>
 
-      {/* Video */}
       <Box mt={2}>
-        <input
-          type="file"
-          accept="video/*"
-          onChange={(e) => {
-            const file = e.target.files[0];
-            if (file) {
-              const reader = new FileReader();
-              reader.onloadend = () =>
-                handleChange("video", reader.result);
-              reader.readAsDataURL(file);
-            }
-          }}
-        />
+        <label htmlFor="video-upload">
+          <input
+            id="video-upload"
+            type="file"
+            accept="video/*"
+            style={{ display: "none" }}
+            onChange={(e) => {
+              const file = e.target.files[0];
+              if (file) {
+                const reader = new FileReader();
+                reader.onloadend = () =>
+                  handleChange("video", reader.result);
+                reader.readAsDataURL(file);
+              }
+            }}
+          />
+          <Box
+            component="span"
+            sx={{
+              display: "inline-block",
+              px: 2,
+              py: 1,
+              backgroundColor: "#e0e0e0",
+              color: "#222",
+              borderRadius: 2,
+              cursor: "pointer",
+              fontWeight: "bold",
+              border: "1px solid #bbb",
+            }}
+          >
+            Choose Video
+          </Box>
+        </label>
       </Box>
 </>
 )

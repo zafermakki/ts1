@@ -1,9 +1,9 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createHashRouter } from "react-router-dom";
 import FormPage from "../pages/FormPage";
 import EditPage from "../pages/EditPage";
 import SummaryPage from "../pages/SummaryPage";
 
-export const routes = createBrowserRouter([
+export const routes = createHashRouter([
     {
         path: "/",
         element: <FormPage />
